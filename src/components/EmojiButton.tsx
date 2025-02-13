@@ -3,8 +3,8 @@ import { EmojiData } from '@/models/emoji-data';
 import React from 'react';
 interface props {
   emoji: EmojiData;
-  selectedCharacterEntry: Emoji;
-  matchedCharacterEntry: Emoji;
+  selectedCharacterEntry: Emoji | undefined;
+  matchedCharacterEntry: Emoji | undefined;
   onCardClick(): void;
 }
 const EmojiButton: React.FC<props> = ({
@@ -13,9 +13,10 @@ const EmojiButton: React.FC<props> = ({
   matchedCharacterEntry,
   onCardClick,
 }) => {
+  const showEmoji = selectedCharacterEntry || matchedCharacterEntry;
   return (
     <button className="text-8xl p-8" onClick={onCardClick}>
-      {emoji.character}
+      {showEmoji ? emoji.character : '?'}
     </button>
   );
 };
