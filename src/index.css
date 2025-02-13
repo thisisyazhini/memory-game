@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+ --color-hot-pink:#d32a79;
+ --color-standard: #242021;
+ --font-display: "MightySouly", "sans-serif";  
+}
+
+@font-face {
+    font-family: 'MightySouly';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/MightySouly-lxggD.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
