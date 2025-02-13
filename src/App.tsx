@@ -1,17 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Start from './components/Start';
 import MemoryCard from './components/MemoryCard';
 import { emojiAPIBaseURL, shuffleArray } from './utils/constants';
+import { EmojiData } from './models/emoji-data';
 import { Emoji } from './models/emoji';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
-  const [emojiData, setEmojiData] = useState<Emoji[]>([]);
-  const [selectedCharacters, setSelectedCharacters] = useState<
-    { unicodeCharacter: string; index: number }[]
-  >([]);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [emojiData, setEmojiData] = useState<EmojiData[]>([]);
+  const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
+  const [matchedCharacters, setMatchedCharacters] = useState<Emoji[]>([]);
 
-  const startGame = async () => {
+  useEffect(() => {
+    if (
+      selectedCharacters.length === 2 &&
+      selectedCharacters[0].unicodeCharacter ===
+        selectedCharacters[1].unicodeCharacter
+    ) {
+      setMatchedCharacters([...matchedCharacters, ...selectedCharacters]);
+    }
+  }, [selectedCharacters]);
+
+  useEffect(() => {
+    if (emojiData.length && matchedCharacters.length === emojiData.length) {
+      setIsGameOver(true);
+    }
+  }, [matchedCharacters]);
+
+  const startGame = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(`${emojiAPIBaseURL}`);
       console.log(response);
@@ -27,25 +45,42 @@ function App() {
     }
   };
 
-  const randomizeCharacters = (characters: Emoji[]) => {
-    const duplicateCharacters: Emoji[] = [];
+  const randomizeCharacters = (characters: EmojiData[]) => {
+    const duplicateCharacters: EmojiData[] = [];
     characters.map((char) => {
       duplicateCharacters.push(char, char);
     });
     return shuffleArray(duplicateCharacters);
   };
 
-  const cardClicked = (unicodeCharacter: string, index: number) => {
-    const selected = { unicodeCharacter, index };
-    setSelectedCharacters([...selectedCharacters, selected]);
+  const cardClicked = (selectedEmoji: Emoji) => {
+    const isCardAlreadyPresent = selectedCharacters.find(
+      (entry) => entry.index === selectedEmoji.index
+    );
+    if (!isCardAlreadyPresent && selectedCharacters.length < 2) {
+      // add the entry if its not already present and if there are less than 2 cards selected
+      setSelectedCharacters((prevSelectedCharacters) => [
+        ...prevSelectedCharacters,
+        selectedEmoji,
+      ]);
+    } else if (!isCardAlreadyPresent && selectedCharacters.length === 2) {
+      // discard if there are no matches
+      setSelectedCharacters([selectedEmoji]);
+    }
     console.log(selectedCharacters);
   };
+
   return (
     <>
       <main className="min-h-screen bg-zinc-100 text-black font-display">
         {!isGameOn && <Start onStartClick={startGame} />}
         {isGameOn && (
-          <MemoryCard onCardClick={cardClicked} emojiData={emojiData} />
+          <MemoryCard
+            onCardClick={cardClicked}
+            emojiData={emojiData}
+            selectedCharacters={selectedCharacters}
+            matchedCharacters={matchedCharacters}
+          />
         )}
       </main>
     </>
