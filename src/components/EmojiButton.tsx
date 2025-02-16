@@ -15,8 +15,18 @@ const EmojiButton: React.FC<props> = ({
 }) => {
   const showEmoji = selectedCharacterEntry || matchedCharacterEntry;
   return (
-    <button className="text-8xl p-8" onClick={onCardClick}>
-      {showEmoji ? emoji.character : '?'}
+    <button
+      className={`text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
+        !showEmoji ? '' : '[transform:rotateY(180deg)]'
+      }`}
+      onClick={onCardClick}
+    >
+      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-rose-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+        {emoji.character}
+      </div>
+      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-white [backface-visibility:hidden]">
+        ?
+      </div>
     </button>
   );
 };
