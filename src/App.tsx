@@ -104,10 +104,7 @@ function App() {
             matchedCharacters={matchedCharacters}
           />
         )}
-        <span
-          id="balloonsReward"
-          className="absolute bottom-[50%] left-[50%]"
-        />
+        <span id="balloonsReward" className="absolute bottom-0 left-[50%]" />
         <Footer></Footer>
       </main>
     </>

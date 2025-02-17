@@ -1,4 +1,8 @@
-const Start = ({ onStartClick }) => {
+interface startProps {
+  onStartClick(): void;
+}
+
+const Start: React.FC<startProps> = ({ onStartClick }) => {
   return (
     <div className="flex flex-col space-y-10 justify-center h-screen">
       <h1 className="inline-block text-standard text-9xl mx-auto  border-b-hot-pink border-b-[12px] max-w-fit">

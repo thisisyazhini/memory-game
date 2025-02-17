@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Header = ({ onResetGame }) => {
+interface props {
+  onResetGame(): void;
+}
+const Header: React.FC<props> = ({ onResetGame }) => {
   return (
     <div className="bg-rose-200 text-2xl flex justify-between items-center px-4 h-20">
       <h1 className="text-6xl">Memory, it is!</h1>
