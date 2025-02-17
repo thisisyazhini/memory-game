@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 @theme {
- --color-hot-pink:#d32a79;
+ --color-hot-pink:#D32A79;
  --color-standard: #242021;
  --font-display: "MightySouly", "sans-serif";  
 }

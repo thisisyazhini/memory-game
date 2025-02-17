@@ -29,7 +29,7 @@ const doubleCharacters = (characters: EmojiData[]) => {
 };
 
 export function pickAndShuffleRandomCharacters(data: EmojiData[]) {
-  const pickedCharacters = shuffleArray(data).slice(0, 1);
+  const pickedCharacters = shuffleArray(data).slice(0, 5);
   return doubleCharacters(pickedCharacters);
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Start from './components/Start';
 import MemoryCard from './components/MemoryCard';
-import { fetchAndRandomizeEmoji } from './utils/constants';
+import { fetchAndRandomizeEmoji } from './utils/helper';
 import { EmojiData } from './models/emoji-data';
 import { Emoji } from './models/emoji';
 import { useReward } from 'react-rewards';
@@ -84,10 +84,10 @@ function App() {
 
   const resetGame = async () => {
     setIsGameOver(false);
-    const emoji = await fetchAndRandomizeEmoji();
-    setEmojiData(emoji);
     setSelectedCharacters([]);
     setMatchedCharacters([]);
+    const emoji = await fetchAndRandomizeEmoji();
+    setEmojiData(emoji);
   };
 
   return (
@@ -95,6 +95,7 @@ function App() {
       <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
         {!isGameOn && <Start onStartClick={startGame} />}
         <Header onResetGame={resetGame}></Header>
+        {/* <Aurora colorStops={['#D32A79', '#FF66A8', '#D32A79']} speed={0.5} /> */}
         {isGameOn && (
           <MemoryCard
             onCardClick={cardClicked}

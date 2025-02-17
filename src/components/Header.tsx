@@ -5,7 +5,10 @@ const Header = ({ onResetGame }) => {
     <div className="bg-rose-200 text-2xl flex justify-between items-center px-4 h-20">
       <h1 className="text-6xl">Memory, it is!</h1>
       <div className="flex items-center gap-8">
-        <button className="flex items-center gap-2" onClick={onResetGame}>
+        <button
+          className="flex items-center gap-2 border border-dashed border-hot-pink p-3 rounded-2xl"
+          onClick={onResetGame}
+        >
           Replay
           <svg
             xmlns="http://www.w3.org/2000/svg"
