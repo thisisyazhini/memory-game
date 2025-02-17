@@ -24,7 +24,7 @@ const EmojiButton: React.FC<props> = ({
       <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-rose-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
         {emoji.character}
       </div>
-      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-white [backface-visibility:hidden]">
+      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-white [backface-visibility:hidden] cursor-pointer">
         ?
       </div>
     </button>

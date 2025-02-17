@@ -5,6 +5,8 @@ import { emojiAPIBaseURL, shuffleArray } from './utils/constants';
 import { EmojiData } from './models/emoji-data';
 import { Emoji } from './models/emoji';
 import { useReward } from 'react-rewards';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -96,8 +98,9 @@ function App() {
 
   return (
     <>
-      <main className="min-h-screen bg-zinc-100 text-black font-display relative">
+      <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
         {!isGameOn && <Start onStartClick={startGame} />}
+        <Header></Header>
         {isGameOn && (
           <MemoryCard
             onCardClick={cardClicked}
@@ -107,7 +110,7 @@ function App() {
           />
         )}
         <span id="balloonsReward" className="absolute bottom-0 left-[50%]" />
-        <button className="text-8xl"></button>
+        <Footer></Footer>
       </main>
     </>
   );

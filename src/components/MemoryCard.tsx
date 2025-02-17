@@ -37,7 +37,7 @@ const MemoryCard: React.FC<props> = ({
   });
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex flex-1 items-center justify-center">
       <ul className="grid grid-cols-5 gap-12">{emojiCards}</ul>
     </div>
   );
