@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Start from './components/Start';
 import MemoryCard from './components/MemoryCard';
-import { emojiAPIBaseURL, shuffleArray } from './utils/constants';
+import { fetchAndRandomizeEmoji } from './utils/constants';
 import { EmojiData } from './models/emoji-data';
 import { Emoji } from './models/emoji';
 import { useReward } from 'react-rewards';
@@ -16,9 +16,9 @@ function App() {
   const [matchedCharacters, setMatchedCharacters] = useState<Emoji[]>([]);
   const { reward: balloonsReward } = useReward('balloonsReward', 'balloons', {
     lifetime: 1200,
-    startVelocity: 10,
-    elementCount: 100,
-    spread: 180,
+    startVelocity: 20,
+    elementCount: 200,
+    spread: 360,
     colors: [
       '#ABD3DB',
       '#C2E6DF',
@@ -57,26 +57,12 @@ function App() {
 
   const startGame = async () => {
     try {
-      const response = await fetch(`${emojiAPIBaseURL}`);
-      console.log(response);
-      if (!response.ok) {
-        throw new Error('Could not fetch data from API');
-      }
-      const data = await response.json();
-      const emojis = randomizeCharacters(shuffleArray(data).slice(0, 5));
-      setEmojiData(emojis);
+      const emoji = await fetchAndRandomizeEmoji();
+      setEmojiData(emoji);
       setIsGameOn(true);
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const randomizeCharacters = (characters: EmojiData[]) => {
-    const duplicateCharacters: EmojiData[] = [];
-    characters.map((char) => {
-      duplicateCharacters.push(char, char);
-    });
-    return shuffleArray(duplicateCharacters);
   };
 
   const cardClicked = (selectedEmoji: Emoji) => {
@@ -96,11 +82,19 @@ function App() {
     console.log(selectedCharacters);
   };
 
+  const resetGame = async () => {
+    setIsGameOver(false);
+    const emoji = await fetchAndRandomizeEmoji();
+    setEmojiData(emoji);
+    setSelectedCharacters([]);
+    setMatchedCharacters([]);
+  };
+
   return (
     <>
       <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
         {!isGameOn && <Start onStartClick={startGame} />}
-        <Header></Header>
+        <Header onResetGame={resetGame}></Header>
         {isGameOn && (
           <MemoryCard
             onCardClick={cardClicked}
@@ -109,7 +103,10 @@ function App() {
             matchedCharacters={matchedCharacters}
           />
         )}
-        <span id="balloonsReward" className="absolute bottom-0 left-[50%]" />
+        <span
+          id="balloonsReward"
+          className="absolute bottom-[50%] left-[50%]"
+        />
         <Footer></Footer>
       </main>
     </>
