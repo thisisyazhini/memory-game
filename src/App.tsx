@@ -10,14 +10,13 @@ import Header from './components/Header';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
   const [emojiData, setEmojiData] = useState<EmojiData[]>([]);
   const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
   const [matchedCharacters, setMatchedCharacters] = useState<Emoji[]>([]);
   const { reward: balloonsReward } = useReward('balloonsReward', 'balloons', {
-    lifetime: 1200,
+    lifetime: 600,
     startVelocity: 20,
-    elementCount: 200,
+    elementCount: 100,
     spread: 360,
     colors: [
       '#ABD3DB',
@@ -45,15 +44,9 @@ function App() {
 
   useEffect(() => {
     if (emojiData.length && matchedCharacters.length === emojiData.length) {
-      setIsGameOver(true);
-    }
-  }, [matchedCharacters]);
-
-  useEffect(() => {
-    if (isGameOver) {
       balloonsReward();
     }
-  }, [isGameOver]);
+  }, [matchedCharacters]);
 
   const startGame = async () => {
     try {
@@ -83,7 +76,6 @@ function App() {
   };
 
   const resetGame = async () => {
-    setIsGameOver(false);
     setSelectedCharacters([]);
     setMatchedCharacters([]);
     const emoji = await fetchAndRandomizeEmoji();
@@ -95,7 +87,6 @@ function App() {
       <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
         {!isGameOn && <Start onStartClick={startGame} />}
         <Header onResetGame={resetGame}></Header>
-        {/* <Aurora colorStops={['#D32A79', '#FF66A8', '#D32A79']} speed={0.5} /> */}
         {isGameOn && (
           <MemoryCard
             onCardClick={cardClicked}
