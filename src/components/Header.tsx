@@ -1,9 +1,18 @@
 import React from 'react';
+import Timer from './Timer';
 
 interface props {
+  isGameOn: boolean;
+  isGameOver: boolean;
   onResetGame(): void;
+  onElapsedTime(timer: number): void;
 }
-const Header: React.FC<props> = ({ onResetGame }) => {
+const Header: React.FC<props> = ({
+  isGameOn,
+  isGameOver,
+  onResetGame,
+  onElapsedTime,
+}) => {
   return (
     <div className="bg-rose-200 text-2xl flex justify-between items-center px-4 h-20">
       <h1 className="text-6xl">Memory, it is!</h1>
@@ -25,6 +34,11 @@ const Header: React.FC<props> = ({ onResetGame }) => {
             />
           </svg>
         </button>
+        <Timer
+          isGameStarted={isGameOn}
+          isGameEnded={isGameOver}
+          onElapsedTime={onElapsedTime}
+        />
       </div>
     </div>
   );

@@ -4,33 +4,16 @@ import MemoryCard from './components/MemoryCard';
 import { fetchAndRandomizeEmoji } from './utils/helper';
 import { EmojiData } from './models/emoji-data';
 import { Emoji } from './models/emoji';
-import { useReward } from 'react-rewards';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { Confetti } from './components/Confetti';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojiData, setEmojiData] = useState<EmojiData[]>([]);
   const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
   const [matchedCharacters, setMatchedCharacters] = useState<Emoji[]>([]);
-  const { reward: balloonsReward } = useReward('balloonsReward', 'balloons', {
-    lifetime: 600,
-    startVelocity: 20,
-    elementCount: 100,
-    spread: 360,
-    colors: [
-      '#ABD3DB',
-      '#C2E6DF',
-      '#D1EBD8',
-      '#E5F5DC',
-      '#FFFFE1',
-      '#A9B5D9',
-      '#F2A477',
-      '#F29472',
-      '#F2C4C4',
-      '#F2F2F2',
-    ],
-  });
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     if (
@@ -44,7 +27,7 @@ function App() {
 
   useEffect(() => {
     if (emojiData.length && matchedCharacters.length === emojiData.length) {
-      balloonsReward();
+      setIsGameOver(true);
     }
   }, [matchedCharacters]);
 
@@ -72,31 +55,42 @@ function App() {
       // discard if there are no matches
       setSelectedCharacters([selectedEmoji]);
     }
-    console.log(selectedCharacters);
   };
 
   const resetGame = async () => {
+    setIsGameOver(false);
     setSelectedCharacters([]);
     setMatchedCharacters([]);
     const emoji = await fetchAndRandomizeEmoji();
     setEmojiData(emoji);
   };
 
+  const onElapsedTime = (timer: number) => {
+    console.log(timer);
+  };
+
   return (
     <>
       <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
         {!isGameOn && <Start onStartClick={startGame} />}
-        <Header onResetGame={resetGame}></Header>
         {isGameOn && (
-          <MemoryCard
-            onCardClick={cardClicked}
-            emojiData={emojiData}
-            selectedCharacters={selectedCharacters}
-            matchedCharacters={matchedCharacters}
-          />
+          <>
+            <Header
+              isGameOn={isGameOn}
+              isGameOver={isGameOver}
+              onResetGame={resetGame}
+              onElapsedTime={onElapsedTime}
+            ></Header>
+            <MemoryCard
+              onCardClick={cardClicked}
+              emojiData={emojiData}
+              selectedCharacters={selectedCharacters}
+              matchedCharacters={matchedCharacters}
+            />
+            <Footer></Footer>
+          </>
         )}
-        <span id="balloonsReward" className="absolute bottom-0 left-[50%]" />
-        <Footer></Footer>
+        {isGameOver && <Confetti></Confetti>}
       </main>
     </>
   );
