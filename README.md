@@ -94,3 +94,6 @@ Contributions are welcome!  Whether it's bug fixes, new features, or just improv
 
 Feel free to reach out with any questions or suggestions!  You can find me on [GitHub](https://github.com/thisisyazhini/).
 
+<video src="https://github.com/thisisyazhini/memory-game/raw/refs/heads/main/src/assets/demo.mov" width="720" height="720" controls></video>
+
+The demo is [here](https://memory-it-is.netlify.app/)
