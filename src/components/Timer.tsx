@@ -1,3 +1,4 @@
+import { formatTime } from '../utils/helper';
 import { useState, useEffect, useRef, Ref } from 'react';
 
 interface props {
@@ -45,12 +46,6 @@ const Timer: React.FC<props> = ({
       }
     };
   }, [isGameStarted, isGameEnded]);
-
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  };
 
   return <div>{formatTime(timer)}</div>;
 };

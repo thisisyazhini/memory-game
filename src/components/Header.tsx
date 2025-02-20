@@ -18,7 +18,7 @@ const Header: React.FC<props> = ({
       <h1 className="text-6xl">Memory, it is!</h1>
       <div className="flex items-center gap-8">
         <button
-          className="flex items-center gap-2 border border-dashed border-hot-pink p-3 rounded-2xl"
+          className="flex items-center gap-2 border border-dashed border-hot-pink p-3 rounded-2xl cursor-pointer"
           onClick={onResetGame}
         >
           Replay

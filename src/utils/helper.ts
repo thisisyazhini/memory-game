@@ -29,11 +29,17 @@ const doubleCharacters = (characters: EmojiData[]) => {
 };
 
 export function pickAndShuffleRandomCharacters(data: EmojiData[]) {
-  const pickedCharacters = shuffleArray(data).slice(0, 5);
+  const pickedCharacters = shuffleArray(data).slice(0, 2);
   return doubleCharacters(pickedCharacters);
 }
 
 export async function fetchAndRandomizeEmoji() {
   const emojiData = await fetchEmojiData();
   return pickAndShuffleRandomCharacters(emojiData);
+}
+
+export function formatTime(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }

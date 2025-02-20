@@ -7,6 +7,7 @@ import { Emoji } from './models/emoji';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { Confetti } from './components/Confetti';
+import GameStats from './components/GameStats';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -14,6 +15,8 @@ function App() {
   const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
   const [matchedCharacters, setMatchedCharacters] = useState<Emoji[]>([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [gameTime, setGameTime] = useState(0);
+  const [showStats, setshowStats] = useState(false);
 
   useEffect(() => {
     if (
@@ -28,6 +31,7 @@ function App() {
   useEffect(() => {
     if (emojiData.length && matchedCharacters.length === emojiData.length) {
       setIsGameOver(true);
+      setshowStats(true);
     }
   }, [matchedCharacters]);
 
@@ -66,7 +70,11 @@ function App() {
   };
 
   const onElapsedTime = (timer: number) => {
-    console.log(timer);
+    setGameTime(timer);
+  };
+
+  const onClose = () => {
+    setshowStats(false);
   };
 
   return (
@@ -90,7 +98,19 @@ function App() {
             <Footer></Footer>
           </>
         )}
-        {isGameOver && <Confetti></Confetti>}
+        {isGameOver && (
+          <>
+            <div className="z-2000">
+              <Confetti></Confetti>
+            </div>
+            <GameStats
+              isOpen={showStats}
+              gameTime={gameTime}
+              onResetGame={resetGame}
+              onClose={onClose}
+            ></GameStats>
+          </>
+        )}
       </main>
     </>
   );
