@@ -44,7 +44,7 @@ const Timer: React.FC<props> = ({
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-  }, [isRunning, startTimer]);
+  }, [isRunning]);
 
   const onContinue = () => {
     setShowPauseScreen(false);
