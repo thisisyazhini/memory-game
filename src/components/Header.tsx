@@ -35,6 +35,7 @@ const Header: React.FC<props> = ({
           </svg>
         </button>
         <Timer
+          onResetGame={onResetGame}
           isGameStarted={isGameOn}
           isGameEnded={isGameOver}
           onElapsedTime={onElapsedTime}
