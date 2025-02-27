@@ -9,6 +9,7 @@ import Header from './components/Header';
 import { Confetti } from './components/Confetti';
 import GameStats from './components/GameStats';
 import AssistiveTechInfo from './components/AssistiveTechInfo';
+import ErrorNotification from './components/ErrorNotification';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -18,6 +19,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [gameTime, setGameTime] = useState(0);
   const [showStats, setshowStats] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (
@@ -42,8 +44,13 @@ function App() {
       setEmojiData(emoji);
       setIsGameOn(true);
     } catch (e) {
+      setIsError(true);
       console.error(e);
     }
+  };
+
+  const resetError = () => {
+    setIsError(!isError);
   };
 
   const cardClicked = (selectedEmoji: Emoji) => {
@@ -78,7 +85,7 @@ function App() {
   return (
     <>
       <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
-        {!isGameOn && <Start onStartClick={startGame} />}
+        {!isGameOn && !isError && <Start onStartClick={startGame} />}
         {isGameOn && (
           <>
             <Header
@@ -117,6 +124,7 @@ function App() {
             ></GameStats>
           </>
         )}
+        {isError && <ErrorNotification onRetry={resetError} />}
       </main>
     </>
   );

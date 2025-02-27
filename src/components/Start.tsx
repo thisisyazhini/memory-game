@@ -10,7 +10,7 @@ const Start: React.FC<startProps> = ({ onStartClick }) => {
       </h1>
       <div className="flex justify-center ">
         <button
-          className="btn btn-dash text-7xl text-standard h-20"
+          className="text-7xl border border-dashed border-hot-pink p-3 rounded-2xl cursor-pointer w-50"
           onClick={onStartClick}
         >
           START
