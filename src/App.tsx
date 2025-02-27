@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import { Confetti } from './components/Confetti';
 import GameStats from './components/GameStats';
+import AssistiveTechInfo from './components/AssistiveTechInfo';
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -93,6 +94,14 @@ function App() {
               matchedCharacters={matchedCharacters}
             />
             <Footer></Footer>
+          </>
+        )}
+        {isGameOn && !isGameOver && (
+          <>
+            <AssistiveTechInfo
+              emojisData={emojiData}
+              matchedCards={matchedCharacters}
+            ></AssistiveTechInfo>
           </>
         )}
         {isGameOver && (
