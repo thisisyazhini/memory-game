@@ -25,6 +25,7 @@ const MemoryCard: React.FC<props> = ({
     return (
       <li className={`grid w-42 h-42 group [perspective:1000px]`} key={index}>
         <EmojiButton
+          index={index + 1}
           emoji={emoji}
           selectedCharacterEntry={selectedCharacterEntry}
           matchedCharacterEntry={matchedCharacterEntry}

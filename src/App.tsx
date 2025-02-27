@@ -46,16 +46,13 @@ function App() {
   };
 
   const cardClicked = (selectedEmoji: Emoji) => {
-    const isCardAlreadyPresent = selectedCharacters.find(
-      (entry) => entry.index === selectedEmoji.index
-    );
-    if (!isCardAlreadyPresent && selectedCharacters.length < 2) {
-      // add the entry if its not already present and if there are less than 2 cards selected
+    if (selectedCharacters.length < 2) {
+      // add the entry if there are less than 2 cards selected
       setSelectedCharacters((prevSelectedCharacters) => [
         ...prevSelectedCharacters,
         selectedEmoji,
       ]);
-    } else if (!isCardAlreadyPresent && selectedCharacters.length === 2) {
+    } else if (selectedCharacters.length === 2) {
       // discard if there are no matches
       setSelectedCharacters([selectedEmoji]);
     }

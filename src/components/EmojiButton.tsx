@@ -2,24 +2,39 @@ import { Emoji } from '@/models/emoji';
 import { EmojiData } from '@/models/emoji-data';
 import React from 'react';
 interface props {
+  index: number;
   emoji: EmojiData;
   selectedCharacterEntry: Emoji | undefined;
   matchedCharacterEntry: Emoji | undefined;
   onCardClick(): void;
 }
 const EmojiButton: React.FC<props> = ({
+  index,
   emoji,
   selectedCharacterEntry,
   matchedCharacterEntry,
   onCardClick,
 }) => {
   const showEmoji = selectedCharacterEntry || matchedCharacterEntry;
+  const btnAria = matchedCharacterEntry
+    ? `${emoji.character}. Matched.`
+    : selectedCharacterEntry
+    ? `${emoji.character}. Not matched yet.`
+    : `'Card is face down'.`;
   return (
     <button
+      disabled={matchedCharacterEntry?.unicodeCharacter === emoji.unicodeName}
       className={`text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
         !showEmoji ? '' : '[transform:rotateY(180deg)]'
       }`}
-      onClick={onCardClick}
+      // to disallow the same card from being selected twice
+      onClick={
+        selectedCharacterEntry?.unicodeCharacter === emoji.unicodeName
+          ? undefined
+          : onCardClick
+      }
+      aria-live="polite"
+      aria-label={`Position ${index}: ${btnAria}`}
     >
       <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-rose-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
         {emoji.character}
