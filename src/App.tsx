@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Start from './components/Start';
+import Start from './components/GameSettings';
 import MemoryCard from './components/MemoryCard';
 import { fetchAndRandomizeEmoji } from './utils/helper';
 import { EmojiData } from './models/emoji-data';
@@ -10,8 +10,11 @@ import { Confetti } from './components/Confetti';
 import GameStats from './components/GameStats';
 import AssistiveTechInfo from './components/AssistiveTechInfo';
 import ErrorNotification from './components/ErrorNotification';
+import GameSettings from './components/GameSettings';
 
 function App() {
+  const defaultGameSettings = { category: 'animals-nature', number: 2 };
+  const [gameSettings, setGameSettings] = useState(defaultGameSettings);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojiData, setEmojiData] = useState<EmojiData[]>([]);
   const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
@@ -40,7 +43,10 @@ function App() {
 
   const startGame = async () => {
     try {
-      const emoji = await fetchAndRandomizeEmoji();
+      const emoji = await fetchAndRandomizeEmoji(
+        gameSettings.category,
+        gameSettings.number
+      );
       setEmojiData(emoji);
       setIsGameOn(true);
     } catch (e) {
@@ -84,8 +90,8 @@ function App() {
 
   return (
     <>
-      <main className="min-h-screen flex flex-col bg-zinc-100 text-black font-display relative">
-        {!isGameOn && !isError && <Start onStartClick={startGame} />}
+      <main className="min-h-screen flex flex-col bg-color-base-100 text-color-base-content font-display relative">
+        {!isGameOn && !isError && <GameSettings onStartClick={startGame} />}
         {isGameOn && (
           <>
             <Header

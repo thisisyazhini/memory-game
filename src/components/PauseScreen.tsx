@@ -23,7 +23,7 @@ const PauseScreen: React.FC<props> = ({
             <p className="text-6xl">{formatTime(gameTime)}</p>
             <div className="flex items-center gap-20">
               <button
-                className="border border-hot-pink border-dashed p-4 rounded-4xl cursor-pointer"
+                className="btn btn-primary border border-hot-pink border-dashed p-4 rounded-4xl cursor-pointer"
                 onClick={onReset}
               >
                 <svg
@@ -39,7 +39,7 @@ const PauseScreen: React.FC<props> = ({
                 </svg>
               </button>
               <button
-                className="border border-dashed border-hot-pink p-4 rounded-4xl cursor-pointer"
+                className="btn btn-primary border border-dashed border-hot-pink p-4 rounded-4xl cursor-pointer"
                 onClick={onContinue}
               >
                 <svg

@@ -24,7 +24,7 @@ const EmojiButton: React.FC<props> = ({
   return (
     <button
       disabled={matchedCharacterEntry?.unicodeCharacter === emoji.unicodeName}
-      className={`text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
+      className={`btn btn-neutral text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
         !showEmoji ? '' : '[transform:rotateY(180deg)]'
       }`}
       // to disallow the same card from being selected twice
@@ -36,10 +36,10 @@ const EmojiButton: React.FC<props> = ({
       aria-live="polite"
       aria-label={`Position ${index}: ${btnAria}`}
     >
-      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-rose-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+      <div className="bg-primary flex items-center justify-center absolute inset-0 h-full w-full rounded-xl  [transform:rotateY(180deg)] [backface-visibility:hidden]">
         {emoji.character}
       </div>
-      <div className="flex items-center justify-center absolute inset-0 h-full w-full rounded-xl bg-white [backface-visibility:hidden] cursor-pointer">
+      <div className="bg-secondary flex items-center justify-center absolute inset-0 h-full w-full rounded-xl [backface-visibility:hidden] cursor-pointer">
         ?
       </div>
     </button>

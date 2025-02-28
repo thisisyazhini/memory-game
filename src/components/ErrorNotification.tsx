@@ -10,14 +10,14 @@ const ErrorNotification: React.FC<props> = ({ onRetry }) => {
   }, []);
   return (
     <div
-      className="w-screen h-screen flex flex-col items-center justify-center gap-10"
+      className="w-screen h-screen flex flex-col items-center justify-center gap-10 bg-color-base-100"
       ref={divRef}
       tabIndex={-1}
     >
       <h2 className="text-8xl">😬Something seems broken!🙈</h2>
       <p className="text-6xl">Lets try to see if your magic touch fixes it.</p>
       <button
-        className="text-4xl flex items-center justify-between border border-dashed border-hot-pink p-3 rounded-2xl cursor-pointer w-40"
+        className="btn btn-primary text-4xl flex items-center justify-between border border-dashed border-hot-pink p-3 rounded-2xl cursor-pointer w-40"
         onClick={onRetry}
       >
         Retry

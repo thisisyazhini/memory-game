@@ -1,5 +1,5 @@
 import { EmojiData } from '@/models/emoji-data';
-import { emojiAPIBaseURL } from './constants';
+import { fetchEmojiData } from './service';
 
 export function shuffleArray(array: EmojiData[]) {
   // shuffle the array using Fisher Yates algorithm
@@ -11,15 +11,6 @@ export function shuffleArray(array: EmojiData[]) {
   return shuffled;
 }
 
-async function fetchEmojiData(): Promise<EmojiData[]> {
-  const response = await fetch(`${emojiAPIBaseURL}`);
-  console.log(response);
-  if (!response.ok) {
-    throw new Error('Could not fetch data from API');
-  }
-  return await response.json();
-}
-
 const doubleCharacters = (characters: EmojiData[]) => {
   const duplicateCharacters: EmojiData[] = [];
   characters.map((char) => {
@@ -28,14 +19,20 @@ const doubleCharacters = (characters: EmojiData[]) => {
   return shuffleArray(duplicateCharacters);
 };
 
-export function pickAndShuffleRandomCharacters(data: EmojiData[]) {
-  const pickedCharacters = shuffleArray(data).slice(0, 5);
+export function pickAndShuffleRandomCharacters(
+  data: EmojiData[],
+  noOfCards: number
+) {
+  const pickedCharacters = shuffleArray(data).slice(0, noOfCards / 2);
   return doubleCharacters(pickedCharacters);
 }
 
-export async function fetchAndRandomizeEmoji() {
-  const emojiData = await fetchEmojiData();
-  return pickAndShuffleRandomCharacters(emojiData);
+export async function fetchAndRandomizeEmoji(
+  categoryName: string,
+  noOfCards: number
+) {
+  const emojiData = await fetchEmojiData(categoryName);
+  return pickAndShuffleRandomCharacters(emojiData, noOfCards);
 }
 
 export function formatTime(seconds: number) {

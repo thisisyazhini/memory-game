@@ -1,9 +1,14 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+
+
+@plugin "daisyui" {
+    themes: cupcake --default , luxury --prefersdark;
+}
 
 @theme {
- --color-hot-pink:#D32A79;
- --color-standard: #242021;
+ /* --color-hot-pink:#D32A79;
+ --color-standard: #242021; */
  --font-display: "MightySouly", "sans-serif";  
 }
 
@@ -14,3 +19,4 @@
     font-display: swap;
     src: url('/MightySouly-lxggD.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }  
+
