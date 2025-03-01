@@ -28,7 +28,7 @@ const GameStats: React.FC<props> = ({
             className="absolute bg-neutral w-full h-full flex"
             onClick={onClose}
           >
-            <div className="absolute top-4 right-4 text-2xl border border-accent border-dashed p-2 rounded-4xl cursor-pointer">
+            <div className="absolute top-4 right-4 text-2xl border border-error text-error border-dashed p-2 rounded-4xl cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="20"
@@ -45,17 +45,17 @@ const GameStats: React.FC<props> = ({
               <h2 className="text-neutral-content text-6xl mt-20">
                 Level Complete!
               </h2>
-              <div className="grid grid-cols-2 gap-4 p-4 text-neutral-content text-lg my-10 border border-dashed border-hot-pink rounded-2xl">
+              <div className="grid grid-cols-2 gap-4 p-4 text-info text-lg my-10 border border-dashed border-info rounded-2xl">
                 <p>Personal Best</p>
-                <span className="text-hot-pink">{formatTime(gameTime)}</span>
+                <span>{formatTime(gameTime)}</span>
                 <p>Game time</p>
-                <span className="text-hot-pink">{formatTime(gameTime)}</span>
+                <span>{formatTime(gameTime)}</span>
               </div>
               <div
-                className="border border-primary-content border-dashed rounded-2xl p-4 text-xl cursor-pointer"
+                className="border border-success border-dashed rounded-2xl p-4 text-xl cursor-pointer"
                 onClick={onResetGame}
               >
-                <span className="text-primary-content">Play again</span>
+                <span className="text-success">Play again</span>
               </div>
             </div>
           </div>

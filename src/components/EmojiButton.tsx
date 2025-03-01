@@ -36,7 +36,7 @@ const EmojiButton: React.FC<props> = ({
       aria-live="polite"
       aria-label={`Position ${index}: ${btnAria}`}
     >
-      <div className="bg-primary flex items-center justify-center absolute inset-0 h-full w-full rounded-xl  [transform:rotateY(180deg)] [backface-visibility:hidden]">
+      <div className="bg-accent flex items-center justify-center absolute inset-0 h-full w-full rounded-xl  [transform:rotateY(180deg)] [backface-visibility:hidden]">
         {emoji.character}
       </div>
       <div className="bg-secondary flex items-center justify-center absolute inset-0 h-full w-full rounded-xl [backface-visibility:hidden] cursor-pointer">
