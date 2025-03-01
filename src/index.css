@@ -3,7 +3,7 @@
 
 
 @plugin "daisyui" {
-    themes: cupcake --default , luxury --prefersdark;
+    themes: acid --default , luxury --prefersdark;
 }
 
 @theme {
