@@ -15,7 +15,7 @@ export async function fetchEmojiData(
 }
 
 export async function fetchEmojiCategories(): Promise<Categories[]> {
-  const baseURL = `${apiBaseURL}categories/?${accessKey}`;
+  const baseURL = `${apiBaseURL}categories?${accessKey}`;
   const response = await fetch(baseURL);
   console.log(response);
   if (!response.ok) {

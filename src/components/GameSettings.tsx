@@ -52,11 +52,6 @@ const GameSettings: React.FC<gameProps> = ({
             </>
           </ul>
         </div>
-        {/* {gameCategories.map((category, index) => (
-                <option key={index} value={category.slug}>
-                  {category.slug}
-                </option>
-              ))} */}
         <div className="dropdown">
           <div
             tabIndex={0}
