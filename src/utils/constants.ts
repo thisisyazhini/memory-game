@@ -1,4 +1,4 @@
-import { DifficultyLevels } from '../models/difficulty-levels';
+import { DifficultyLevels, GameSetting } from '../models/difficulty-levels';
 
 export const apiBaseURL = 'https://emoji-api.com/';
 export const accessKey = 'access_key=45c5c74efa900124aaec1da2064ca304cf13dc03';
@@ -7,3 +7,8 @@ export const difficultyLevels: DifficultyLevels[] = [
   { name: 'medium', value: 14 },
   { name: 'difficult', value: 16 },
 ];
+
+export const defaultGameSettings: GameSetting = {
+  category: 'animals-nature',
+  difficultyLevel: { name: 'easy', value: 10 },
+};

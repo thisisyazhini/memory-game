@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Start from './components/GameSettings';
 import MemoryCard from './components/MemoryCard';
 import { fetchAndRandomizeEmoji } from './utils/helper';
 import { EmojiData } from './models/emoji-data';
@@ -11,10 +10,13 @@ import GameStats from './components/GameStats';
 import AssistiveTechInfo from './components/AssistiveTechInfo';
 import ErrorNotification from './components/ErrorNotification';
 import GameSettings from './components/GameSettings';
+import { defaultGameSettings } from './utils/constants';
+import { DifficultyLevels, GameSetting } from './models/difficulty-levels';
+import { Categories } from './models/categories';
 
 function App() {
-  const defaultGameSettings = { category: 'animals-nature', number: 2 };
-  const [gameSettings, setGameSettings] = useState(defaultGameSettings);
+  const [gameSettings, setGameSettings] =
+    useState<GameSetting>(defaultGameSettings);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojiData, setEmojiData] = useState<EmojiData[]>([]);
   const [selectedCharacters, setSelectedCharacters] = useState<Emoji[]>([]);
@@ -45,7 +47,7 @@ function App() {
     try {
       const emoji = await fetchAndRandomizeEmoji(
         gameSettings.category,
-        gameSettings.number
+        gameSettings.difficultyLevel.value
       );
       setEmojiData(emoji);
       setIsGameOn(true);
@@ -88,10 +90,27 @@ function App() {
     setshowStats(false);
   };
 
+  const setGameLevelSetting = (difficultyLevel: DifficultyLevels) => {
+    setGameSettings({ category: gameSettings.category, difficultyLevel });
+  };
+
+  const setGameCategorySetting = (category: Categories) => {
+    setGameSettings({
+      category: category.slug,
+      difficultyLevel: gameSettings.difficultyLevel,
+    });
+  };
+
   return (
     <>
       <main className="min-h-screen flex flex-col bg-color-base-100 text-color-base-content font-display relative">
-        {!isGameOn && !isError && <GameSettings onStartClick={startGame} />}
+        {!isGameOn && !isError && (
+          <GameSettings
+            onStartClick={startGame}
+            onDifficultySet={setGameLevelSetting}
+            onEmojiCategorySet={setGameCategorySetting}
+          />
+        )}
         {isGameOn && (
           <>
             <Header
