@@ -23,7 +23,10 @@ const MemoryCard: React.FC<props> = ({
       (entry) => entry.index === index
     );
     return (
-      <li className={`grid w-42 h-42 group [perspective:1000px]`} key={index}>
+      <li
+        className={`grid w-42 h-42 sm:w-20 sm:h-20 group [perspective:1000px]`}
+        key={index}
+      >
         <EmojiButton
           index={index + 1}
           emoji={emoji}
@@ -39,7 +42,9 @@ const MemoryCard: React.FC<props> = ({
 
   return (
     <div className="flex flex-1 items-center justify-center">
-      <ul className="grid grid-cols-5 gap-12">{emojiCards}</ul>
+      <ul className="grid grid-cols-6 sm:grid-cols-2 grid-flow-row-dense gap-4">
+        {emojiCards}
+      </ul>
     </div>
   );
 };

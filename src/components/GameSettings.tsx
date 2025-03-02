@@ -40,17 +40,17 @@ const GameSettings: React.FC<gameProps> = ({
 
   return (
     <div className="flex flex-col items-center justify-center space-y-20 h-screen">
-      <h1 className="inline-block text-color-base-content text-9xl mx-auto border-b-neutral border-b-[12px] max-w-fit">
+      <h1 className="inline-block text-color-base-content text-6xl md:text-7xl lg:text-9xl mx-auto border-b-neutral border-b-[12px] max-w-fit">
         Memory, it is!
       </h1>
 
       <form className="flex flex-col">
-        <div className="flex items-center justify-center gap-40">
+        <div className="flex items-center justify-center gap-10 md:gap-20 lg:gap-40">
           <div className="dropdown">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-xl btn-info rounded-full m-1"
+              className="btn btn-md md:btn-lg lg:btn-xl btn-dash btn-info rounded-full m-1"
             >
               Emoji Category
             </div>
@@ -77,7 +77,7 @@ const GameSettings: React.FC<gameProps> = ({
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-xl btn-info rounded-full m-1"
+              className="btn btn-md md:btn-lg lg:btn-xl btn-dash btn-info rounded-full m-1"
             >
               Difficulty Level
             </div>
@@ -98,7 +98,7 @@ const GameSettings: React.FC<gameProps> = ({
         <button
           type="button"
           onClick={onStartClick}
-          className="btn btn-success mt-10 btn-xl rounded-full min-w-[100px]"
+          className="btn btn-success btn-dash btn-md md:btn-lg lg:btn-xl mt-10 rounded-full min-w-[100px]"
         >
           START
         </button>

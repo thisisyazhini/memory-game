@@ -19,19 +19,20 @@ const PauseScreen: React.FC<props> = ({
       {isOpen && (
         <div className="fixed top-0 bottom-0 right-0 left-0 z-1000">
           <div className="absolute bg-neutral w-full h-full flex flex-col items-center justify-center gap-10 cursor-pointer">
-            <h2 className="text-8xl text-base-content">We are on a break!</h2>
-            <p className="text-6xl text-neutral-content">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl text-neutral-content">
+              We are on a break!
+            </h2>
+            <p className="text-4xl md:text-5xl lg:text-6xl text-neutral-content">
               {formatTime(gameTime)}
             </p>
             <div className="flex items-center gap-20">
               <button
-                className="btn btn-error btn-dash btn-xl"
+                className="btn btn-error btn-dash btn-md md:btn-lg lg:btn-xl"
                 onClick={onReset}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  height="40"
-                  width="40"
+                  className="size-6 md:size-10"
                   viewBox="0 0 512 512"
                 >
                   <path
@@ -41,13 +42,12 @@ const PauseScreen: React.FC<props> = ({
                 </svg>
               </button>
               <button
-                className="btn btn-success btn-dash btn-xl"
+                className="btn btn-success btn-dash btn-md md:btn-lg lg:btn-xl"
                 onClick={onContinue}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  height="40"
-                  width="40"
+                  className="size-6 md:size-10"
                   viewBox="0 0 384 512"
                 >
                   <path

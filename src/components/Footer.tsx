@@ -2,12 +2,11 @@ const Footer = () => {
   return (
     <div className="flex items-center bg-color-base-100 p-4 shadow-2xs">
       <div className="flex flex-1 gap-2 items-center justify-center text-info">
-        <p className="text-standard text-xl">Made with</p>
+        <p className="text-xl">Made with</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
-          height="16"
-          width="16"
+          className="size-4 md:size-6"
         >
           <path
             fill="currentColor"
@@ -23,8 +22,7 @@ const Footer = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 496 512"
-          width="16"
-          height="16"
+          className="size-4 md:size-6"
         >
           <path
             fill="currentColor"

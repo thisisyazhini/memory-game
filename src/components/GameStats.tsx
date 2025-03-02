@@ -31,8 +31,7 @@ const GameStats: React.FC<props> = ({
             <div className="absolute top-4 right-4 text-2xl border border-error text-error border-dashed p-2 rounded-4xl cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                width="20"
+                className="size-5 md:size-7"
                 viewBox="0 0 384 512"
               >
                 <path

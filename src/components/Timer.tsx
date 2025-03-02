@@ -76,7 +76,7 @@ const Timer: React.FC<props> = ({
     <>
       <div className="flex items-center gap-4">
         <button
-          className="btn btn-neutral btn-lg rounded-full"
+          className="btn btn-neutral btn-md md:btn-lg lg:btn-xl rounded-full"
           onClick={pauseTimer}
         >
           {isRunning ? (
@@ -84,8 +84,7 @@ const Timer: React.FC<props> = ({
               Pause
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                height="14"
-                width="14"
+                className="size-3 md:size-5"
                 viewBox="0 0 320 512"
               >
                 <path
@@ -99,8 +98,7 @@ const Timer: React.FC<props> = ({
               Play
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                height="14"
-                width="14"
+                className="size-3 md:size-5"
                 viewBox="0 0 384 512"
               >
                 <path
@@ -111,7 +109,9 @@ const Timer: React.FC<props> = ({
             </>
           )}
         </button>
-        <p className="text-2xl text-error min-w-10">{formatTime(timer)}</p>
+        <p className="text-xl md:text-2xl text-error min-w-10">
+          {formatTime(timer)}
+        </p>
       </div>
       {showPauseScreen && (
         <PauseScreen

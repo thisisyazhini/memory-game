@@ -14,14 +14,20 @@ const ErrorNotification: React.FC<props> = ({ onRetry }) => {
       ref={divRef}
       tabIndex={-1}
     >
-      <h2 className="text-8xl">😬Something seems broken!🙈</h2>
-      <p className="text-6xl">Lets try to see if your magic touch fixes it.</p>
-      <button className="btn btn-info btn-lg btn-dash" onClick={onRetry}>
+      <h2 className="text-5xl md:text-6xl lg:text-8xl text-center">
+        😬Something seems broken!🙈
+      </h2>
+      <p className="text-4xl md:text-5xl lg:text-6xl text-center">
+        Lets try to see if your magic touch fixes it.
+      </p>
+      <button
+        className="btn btn-info btn-md md:btn-lg lg:btn-xl btn-dash"
+        onClick={onRetry}
+      >
         Retry
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="20"
-          width="20"
+          className="size-6 md:size-10"
           viewBox="0 0 512 512"
         >
           <path
