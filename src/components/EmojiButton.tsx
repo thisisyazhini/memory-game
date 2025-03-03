@@ -24,7 +24,7 @@ const EmojiButton: React.FC<props> = ({
   return (
     <button
       disabled={matchedCharacterEntry?.unicodeCharacter === emoji.unicodeName}
-      className={`btn btn-neutral text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
+      className={`btn btn-neutral text-6xl md:text-7xl lg:text-8xl relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${
         !showEmoji ? '' : '[transform:rotateY(180deg)]'
       }`}
       // to disallow the same card from being selected twice

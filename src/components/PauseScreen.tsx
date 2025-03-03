@@ -19,7 +19,7 @@ const PauseScreen: React.FC<props> = ({
       {isOpen && (
         <div className="fixed top-0 bottom-0 right-0 left-0 z-1000">
           <div className="absolute bg-neutral w-full h-full flex flex-col items-center justify-center gap-10 cursor-pointer">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl text-neutral-content">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl text-neutral-content">
               We are on a break!
             </h2>
             <p className="text-4xl md:text-5xl lg:text-6xl text-neutral-content">

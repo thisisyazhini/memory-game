@@ -28,7 +28,7 @@ const GameStats: React.FC<props> = ({
             className="absolute bg-neutral w-full h-full flex"
             onClick={onClose}
           >
-            <div className="absolute top-4 right-4 text-2xl border border-error text-error border-dashed p-2 rounded-4xl cursor-pointer">
+            <div className="absolute top-4 right-4 text-lg md:text-xl lg:text-2xl border border-error text-error border-dashed p-2 rounded-4xl cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="size-5 md:size-7"
@@ -41,7 +41,7 @@ const GameStats: React.FC<props> = ({
               </svg>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <h2 className="text-neutral-content text-6xl mt-20">
+              <h2 className="text-neutral-content text-4xl md:text-5xl lg:text-6xl mt-20">
                 Level Complete!
               </h2>
               <div className="grid grid-cols-2 gap-4 p-4 text-info text-lg my-10 border border-dashed border-info rounded-2xl">
