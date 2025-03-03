@@ -4,7 +4,10 @@ Put your memory to the test with this fun and engaging emoji matching game!  Mat
 
 This project is built with React v19 and styled with Tailwind CSS v4, providing a smooth and responsive experience across devices.
 
-[![Demo Video](./src/assets/demo.mov)](./src/assets/demo.mov)  *(Click to watch a demo!)*
+
+<img src="./public/light-theme.png" alt="light-theme-depiction" width="400"/>
+&nbsp;&nbsp;
+<img src="./public/night-theme.png" alt="dark-theme-depiction" width="400"/>
 
 **Play the Game!** 🚀
 
@@ -32,7 +35,7 @@ This project is built with React v19 and styled with Tailwind CSS v4, providing 
 
 ## Tech Stack 🛠️
 
-* **Frontend:** React v19, Tailwind CSS v4, HTML5, CSS3
+* **Frontend:** React v19, Tailwind CSS v4, DaisyUI, HTML5, CSS3
 * **Game Logic:** JavaScript (ES6+)
 * **Deployment:** Netlify (or your preferred platform)
 
@@ -76,7 +79,6 @@ Contributions are welcome!  Whether it's bug fixes, new features, or just improv
 
 ### Planned Features 🚀
 
-- Difficulty Levels: Implement different grid sizes for varying difficulty.
 - Sound Effects: Add sound effects for card flips, matches, and game over.
 - Scoring System: Track the number of attempts and time taken to complete the game.
 - Leaderboard (Maybe): Explore the possibility of adding a leaderboard.
@@ -86,7 +88,7 @@ Contributions are welcome!  Whether it's bug fixes, new features, or just improv
 
 - Inspired by classic memory card games.
 
-- Special thanks to the creators of React, Tailwind CSS, and all the open-source libraries used in this project.
+- Special thanks to the creators of React, Tailwind CSS, DaisyUI components and all the open-source libraries used in this project.
 
 - Emoji data provided by Emoji API.
 
