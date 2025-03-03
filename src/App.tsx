@@ -78,7 +78,10 @@ function App() {
     setIsGameOver(false);
     setSelectedCharacters([]);
     setMatchedCharacters([]);
-    const emoji = await fetchAndRandomizeEmoji();
+    const emoji = await fetchAndRandomizeEmoji(
+      gameSettings.category,
+      gameSettings.difficultyLevel.value
+    );
     setEmojiData(emoji);
   };
 
@@ -88,6 +91,11 @@ function App() {
 
   const onClose = () => {
     setshowStats(false);
+  };
+
+  const onIconClick = () => {
+    resetGame();
+    setIsGameOn(false);
   };
 
   const setGameLevelSetting = (difficultyLevel: DifficultyLevels) => {
@@ -117,6 +125,7 @@ function App() {
               isGameOn={isGameOn}
               isGameOver={isGameOver}
               onResetGame={resetGame}
+              onIconClick={onIconClick}
               onElapsedTime={onElapsedTime}
             ></Header>
             <MemoryCard

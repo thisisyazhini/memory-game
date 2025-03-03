@@ -3,12 +3,10 @@
 
 
 @plugin "daisyui" {
-    themes: acid --default , luxury --prefersdark;
+ themes: acid --default , luxury --prefersdark;
 }
 
 @theme {
- /* --color-hot-pink:#D32A79;
- --color-standard: #242021; */
  --font-display: "MightySouly", "sans-serif";  
 }
 

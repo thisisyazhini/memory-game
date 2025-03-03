@@ -24,7 +24,7 @@ const MemoryCard: React.FC<props> = ({
     );
     return (
       <li
-        className={`grid w-20 h-20 sm:w-30 sm:h-30 lg:w-40 lg:h-40 group [perspective:1000px]`}
+        className={`grid w-20 h-20 sm:w-30 sm:h-30 md:w-35 md:h-35 lg:w-40 lg:h-40 group [perspective:1000px]`}
         key={index}
       >
         <EmojiButton
@@ -42,7 +42,7 @@ const MemoryCard: React.FC<props> = ({
 
   return (
     <div className="flex flex-1 items-center justify-center">
-      <ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 grid-flow-row-dense gap-4">
+      <ul className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 grid-flow-row-dense gap-4">
         {emojiCards}
       </ul>
     </div>

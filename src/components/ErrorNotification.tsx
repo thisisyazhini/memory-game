@@ -21,13 +21,13 @@ const ErrorNotification: React.FC<props> = ({ onRetry }) => {
         Lets try to see if your magic touch fixes it.
       </p>
       <button
-        className="btn btn-info btn-md md:btn-lg lg:btn-xl btn-dash"
+        className="btn btn-info btn-md md:btn-lg lg:btn-xl btn-dash rounded-full"
         onClick={onRetry}
       >
         Retry
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="size-6 md:size-10"
+          className="size-4 md:size-6 lg:size-10"
           viewBox="0 0 512 512"
         >
           <path

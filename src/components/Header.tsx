@@ -5,18 +5,25 @@ interface props {
   isGameOn: boolean;
   isGameOver: boolean;
   onResetGame(): void;
+  onIconClick(): void;
   onElapsedTime(timer: number): void;
 }
 const Header: React.FC<props> = ({
   isGameOn,
   isGameOver,
   onResetGame,
+  onIconClick,
   onElapsedTime,
 }) => {
   return (
-    <div className="bg-color-base-100 text-2xl flex justify-around items-center px-4 h-20 flex-col md:flex-row space-y-4 md:justify-between">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl text-color-base-content">
-        Memory, it is!
+    <div className="bg-color-base-100 text-2xl flex justify-around items-center px-4 flex-col sm:flex-row gap-4 sm:justify-between mb-4">
+      <h1>
+        <button
+          className="cursor-pointer text-4xl md:text-5xl lg:text-6xl"
+          onClick={onIconClick}
+        >
+          Memory, it is!
+        </button>
       </h1>
       <div className="flex items-center gap-4">
         <button
