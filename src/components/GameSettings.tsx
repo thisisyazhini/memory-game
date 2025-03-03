@@ -30,11 +30,11 @@ const GameSettings: React.FC<gameProps> = ({
   }, []);
 
   const setDifficulty = (difficultyLevel: DifficultyLevels) => {
-    document.activeElement?.blur();
+    (document.activeElement as HTMLElement)?.blur();
     onDifficultySet(difficultyLevel);
   };
   const setEmojiCategory = (category: Categories) => {
-    document.activeElement?.blur();
+    (document.activeElement as HTMLElement)?.blur();
     onEmojiCategorySet(category);
   };
 

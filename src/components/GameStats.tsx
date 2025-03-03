@@ -14,7 +14,7 @@ const GameStats: React.FC<props> = ({
   onClose,
   onResetGame,
 }) => {
-  const divRef = useRef(null);
+  const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (divRef.current) {
       divRef.current.focus();

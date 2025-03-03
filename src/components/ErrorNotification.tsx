@@ -4,9 +4,9 @@ interface props {
   onRetry(): void;
 }
 const ErrorNotification: React.FC<props> = ({ onRetry }) => {
-  const divRef = useRef(null);
+  const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    divRef.current.focus();
+    divRef.current?.focus();
   }, []);
   return (
     <div
